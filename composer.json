@@ -1,7 +1,6 @@
 {
     "name": "zrashwani/arachnid-sitemap-bundle",
     "description": "sitemap generator bundle for Symfony2 via traversing website internal links",
-    "version" : "dev-master",
     "keywords": ["sitemap", "seo"],
     "type": "symfony-bundle",
     "license": "MIT",	
@@ -23,9 +22,7 @@
         "symfony/console": "~2.5"
     },
     "autoload": {
-        "psr-0": {
-            "Zrashwani\\ArachnidSitemapBundle": ""
-        },
-	"target-dir": "Zrashwani/ArachnidSitemapBundle"
-    }
+        "psr-0": { "Zrashwani\\ArachnidSitemapBundle": "" }
+    }, 	
+    "target-dir": "Zrashwani/ArachnidSitemapBundle"
 }

@@ -20,7 +20,7 @@ To enable the sitemap bundle, add it to your kernel registerBundles() method:
         public function registerBundles() {
             return array(
                 // ...
-                new Zrashwani\ArachnidSitemapBundle\ArachnidSitemapBundle(),
+                new Zrashwani\ArachnidSitemapBundle\ZrashwaniArachnidSitemapBundle(),
                 // ...
             );
         }

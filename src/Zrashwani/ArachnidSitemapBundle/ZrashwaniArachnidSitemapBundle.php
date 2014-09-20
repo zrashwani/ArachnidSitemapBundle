@@ -12,14 +12,15 @@
 namespace Zrashwani\ArachnidSitemapBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class ArachnidSitemapBundle extends Bundle
 {
-	/**
+    /**
 	* {@inheritdoc}
 	*/
-	public function build(ContainerBuilder $container)
-	{
-		parent::build($container);
-	}
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+    }
 }

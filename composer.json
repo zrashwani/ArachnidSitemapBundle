@@ -1,0 +1,29 @@
+{
+    "name": "zrashwani/arachnid-sitemap-bundle",
+    "description": "sitemap generator bundle for Symfony2 via traversing website internal links",
+    "version" : "dev-master",
+    "keywords": ["sitemap", "seo"],
+    "type": "symfony-bundle",
+    "license": "MIT",	
+    "authors": [
+        {
+            "name": "Zeid Rashwani",
+            "email": "zaid@wewebit.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+		"symfony/framework-bundle": "~2.1",       
+		"codeguy/arachnid": "1.*"
+    },
+    "require-dev": {
+        "symfony/symfony": "~2.3",
+        "phpunit/phpunit": "~3.7",
+        "symfony/console": "~2.5"
+    },
+    "autoload": {
+                "psr-0" : {
+                    "ArachnidSitemapBundle" : "src"
+                }
+            }
+}

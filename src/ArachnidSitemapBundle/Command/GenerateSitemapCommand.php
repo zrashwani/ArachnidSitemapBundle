@@ -8,11 +8,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command to write sitemap.xl to the web directory
+ * Command to write sitemap.xml to the web directory
  * 
- * @author Zeid Rashwani <zrashwani.com>
+ * @author Zeid Rashwani <zaid_r_86@hotmail.com>
  */
-
 class GenerateSitemapCommand extends ContainerAwareCommand
 {
     protected function configure()

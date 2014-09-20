@@ -14,7 +14,7 @@ namespace Zrashwani\ArachnidSitemapBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class ArachnidSitemapBundle extends Bundle
+class ZrashwaniArachnidSitemapBundle extends Bundle
 {
     /**
 	* {@inheritdoc}

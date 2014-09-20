@@ -9,10 +9,9 @@
 * file that was distributed with this source code.
 */
 
-namespace ArachnidSitemapBundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+namespace Zrashwani\ArachnidSitemapBundle;
 
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class ArachnidSitemapBundle extends Bundle
 {

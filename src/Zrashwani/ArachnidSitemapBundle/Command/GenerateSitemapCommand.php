@@ -1,5 +1,5 @@
 <?php
-namespace ArachnidSitemapBundle\Command;
+namespace Zrashwani\ArachnidSitemapBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;

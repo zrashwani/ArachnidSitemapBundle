@@ -1,11 +1,11 @@
 <?php
-namespace ArachnidSitemapBundle\Tests;
+namespace Zrashwani\ArachnidSitemapBundle\Tests;
 
 use \Symfony\Bundle\FrameworkBundle\Console\Application;
 use \Symfony\Component\Console\Tester\CommandTester;
 use \Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-use ArachnidSitemapBundle\Command\GenerateSitemapCommand ;
+use Zrashwani\ArachnidSitemapBundle\Command\GenerateSitemapCommand ;
 
 class ArachnidSitemapCommandTest extends WebTestCase
 {

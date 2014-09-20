@@ -6,7 +6,7 @@ This bundle uses [Arachnid Web Crawler](https://github.com/codeguy/arachnid) to 
 ## How to Install
 You can install this bundle via [composer](http://getcomposer.org). Add the following to the "require" section of composer.json:
 
-   "zrashwani/arachnid-sitemap-bundle": "1.*"
+   "zrashwani/arachnid-sitemap-bundle": "dev-master"
 
 then run `composer update`
 
@@ -38,6 +38,8 @@ Optional parameters can be used to add simple customization on sitemap.xml conte
 * use `--sitemap_filename` to determine name of sitemap file to write, default: sitemap.xml
 * use `--frequency` to specify default <changefreq> for all links
 * use `--use_network` to let the crawler operate of the same base url, instead of "/" route pattern; this option may slow down the process of generation because crawler treats site as remote resource not local one.
+
+make sure your `sitemap_filename` is writable to your web server so the command can place sitemap contents correctly.
 
 ## How to Contribute
 

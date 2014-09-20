@@ -6,7 +6,7 @@ This bundle uses [Arachnid Web Crawler](https://github.com/codeguy/arachnid) to 
 ## How to Install
 You can install this bundle via [composer](http://getcomposer.org). Add the following to the "require" section of composer.json:
 
-   "zrashwani/arachnid-sitemap-bundle": "dev-master"
+    "zrashwani/arachnid-sitemap-bundle": "dev-master"
 
 then run `composer update`
 
@@ -51,5 +51,5 @@ It is very important to separate new features or improvements into separate feat
 and to send a pull request for each branch. This allows me to review and pull in new features
 or improvements individually.
 
-All pull requests must adhere to the [PSR-2 standard][psr2].
+All pull requests must adhere to the [PSR-2 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md).
 

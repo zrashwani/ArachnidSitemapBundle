@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace ArachnidSitemapBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Command to write sitemap.xml to the web directory
- * 
+ *
  * @author Zeid Rashwani <zaid_r_86@hotmail.com>
  */
 class GenerateSitemapCommand extends ContainerAwareCommand
@@ -18,7 +18,7 @@ class GenerateSitemapCommand extends ContainerAwareCommand
     {
         $this
             ->setName('arachnid:sitemap:generate')
-            ->setDescription('command to generate xml sitemap')            
+            ->setDescription('command to generate xml sitemap')
             ->addArgument('base_url', null, InputArgument::REQUIRED, 'base url used to generate absolute urls, ex. http://www.example.com')
             ->addOption('links_depth',null, InputOption::VALUE_OPTIONAL, 'depth of links to traverse, default is 3', 3)
             ->addOption('sitemap_filename', null, InputOption::VALUE_OPTIONAL, 'name of sitemap file generated, by default sitemap.xml', 'sitemap.xml')
@@ -28,9 +28,9 @@ class GenerateSitemapCommand extends ContainerAwareCommand
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
-    {       
-        
-        $depth = $input->getOption('links_depth'); 
+    {
+
+        $depth = $input->getOption('links_depth');
         $frequency = $input->getOption('frequency');
         $base_url = $input->getArgument('base_url');
 
@@ -44,11 +44,11 @@ class GenerateSitemapCommand extends ContainerAwareCommand
             $output->writeln("<error>invalid frequency provided, allowed values: ".implode(',', $valid_frequency_arr)."</error>");
             return ;
         }
-    
-        $output->writeln("<info>begin crawling site</info>");        
+
+        $output->writeln("<info>begin crawling site</info>");
         $start_point = ($input->getOption('use_network') !==true?'/':$base_url);
 
-        $crawler = new \Arachnid\Crawler($start_point, $depth); 
+        $crawler = new \Arachnid\Crawler($start_point, $depth);
         $crawler->traverse();
 
         $links = $crawler->getLinks();
@@ -58,7 +58,7 @@ class GenerateSitemapCommand extends ContainerAwareCommand
         $output->writeln("<comment>finished generating sitemap file</comment>");
         $output->writeln("");
 
-        $web_dir = $this->getContainer()->get('kernel')->getRootDir().'/../web/'; 
+        $web_dir = $this->getContainer()->get('kernel')->getRootDir().'/../web/';
         $target_file = $web_dir.$input->getOption('sitemap_filename');
 
         try{
@@ -76,8 +76,8 @@ class GenerateSitemapCommand extends ContainerAwareCommand
      * @param string $frequency
      * @return \DOMDocument
      */
-    protected function getSitemapDocument(OutputInterface $output, array $links, $frequency){
-
+    protected function getSitemapDocument(OutputInterface $output, array $links, $frequency)
+    {
         $xmlDoc = new \DOMDocument("1.0", "UTF-8");
         $urlset = $xmlDoc->createElement('urlset');
 
@@ -119,7 +119,7 @@ class GenerateSitemapCommand extends ContainerAwareCommand
 
 
         $xmlDoc->appendChild($urlset);
-        
+
         return $xmlDoc;
     }
 }

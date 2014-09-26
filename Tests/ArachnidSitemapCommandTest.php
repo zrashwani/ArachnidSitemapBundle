@@ -26,28 +26,34 @@ class ArachnidSitemapCommandTest extends WebTestCase
 
         $commandTester->execute(array('command' => $command->getName(),
                                       'base_url'=>'zrashwani.com',
-                                      '--links_depth'=>2,
-                                      '--use_network'=>true
+                                      '--links_depth'=>2,                                      
                                       ));
         $this->assertRegExp('/invalid base url.*/', $commandTester->getDisplay(), 'url format validation failed');
-
+        
 
         $commandTester->execute(array('command' => $command->getName(),
                                       'base_url'=>'http://zrashwani.com/',
-                                      '--links_depth'=>3,
-                                      '--use_network'=>true,
+                                      '--links_depth'=>3,                                      
                                       '--frequency' => 'invalid_val'
                                       ));
         $this->assertRegExp('/invalid frequency .*/', $commandTester->getDisplay(), 'frequency value validation failed');
-
+        
 
         $commandTester->execute(array('command' => $command->getName(),
-                                      'base_url'=>'http://newstest.wewebit.com/',
-                                      '--links_depth'=>3,
-                                      '--use_network'=>true
+                                      'base_url'=>'http://zrashwani.com/',
+                                      '--links_depth'=>5,
+                                      '--frequency' => 'daily',                                      
                                       ));
-        $this->assertRegExp('/sitemap file written .*/', $commandTester->getDisplay(), 'sitemap not written due to some error');
+        $this->assertRegExp("/sitemap file written .*/", $commandTester->getDisplay(), 'sitemap not written due to some error');
+        $this->assertRegExp("/(([0-9])*[1-9]+) links found.*/", $commandTester->getDisplay(), 'number of links found failed due to some error');
+        
 
-        echo $commandTester->getDisplay();
+        $commandTester->execute(array('command' => $command->getName(),
+                                      'base_url'=>'http://zrashwani.com/', //test default values
+                                      ));
+        $this->assertRegExp('/sitemap file written .*/', $commandTester->getDisplay(), 'sitemap not written due to some error');        
+        $this->assertRegExp("/(([0-9])*[1-9]+) links found.*/", $commandTester->getDisplay(), 'number of links found failed due to some error');
+
+        
     }
 }

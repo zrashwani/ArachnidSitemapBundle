@@ -21,9 +21,9 @@ class GenerateSitemapCommand extends ContainerAwareCommand
             ->setDescription('command to generate xml sitemap')
             ->addArgument('base_url', null, InputArgument::REQUIRED, 'base url used to generate absolute urls, ex. http://www.example.com')
             ->addOption('links_depth',null, InputOption::VALUE_OPTIONAL, 'depth of links to traverse, default is 3', 3)
-            ->addOption('sitemap_filename', null, InputOption::VALUE_OPTIONAL, 'name of sitemap file generated, by default sitemap.xml', 'sitemap.xml')
+            ->addOption('sitemap_path', null, InputOption::VALUE_OPTIONAL, 'name of sitemap file generated, by default WEB_DIR/sitemap.xml')
             ->addOption('frequency', null, InputOption::VALUE_OPTIONAL, 'frequency value to be written in the sitemap xml', 'daily')
-            ->addOption('use_network', null, InputOption::VALUE_OPTIONAL, 'if set to true, crawler will use crawl base_url itself instead of "/" route pattern');
+            ;
         ;
     }
 
@@ -46,24 +46,28 @@ class GenerateSitemapCommand extends ContainerAwareCommand
         }
 
         $output->writeln("<info>begin crawling site</info>");
-        $start_point = ($input->getOption('use_network') !==true?'/':$base_url);
+        
 
-        $crawler = new \Arachnid\Crawler($start_point, $depth);
+        $output->writeln('<comment>begin crawling '.$base_url.'</comment>');
+
+        $crawler = new \Arachnid\Crawler($base_url, $depth);
         $crawler->traverse();
-
         $links = $crawler->getLinks();
+        $output->writeln("<info>".count($links)." links found in the url</info>");
 
         $output->writeln("<comment>start generating sitemap file</comment>");
         $dom_doc = $this->getSitemapDocument($output,$links, $frequency);
         $output->writeln("<comment>finished generating sitemap file</comment>");
         $output->writeln("");
 
-        $web_dir = $this->getContainer()->get('kernel')->getRootDir().'/../web/';
-        $target_file = $web_dir.$input->getOption('sitemap_filename');
+        $sitemap_path = $input->getOption('sitemap_path');
+        if(empty($sitemap_path)){
+            $sitemap_path = $this->getContainer()->get('kernel')->getRootDir().'/../web/sitemap.xml';
+        }
 
         try{
-            $dom_doc->save($target_file);
-            $output->writeln("<info>sitemap file written to ".$target_file."</info>");
+            $dom_doc->save($sitemap_path);
+            $output->writeln("<info>sitemap file written to ".$sitemap_path."</info>");
         }catch(Exception $ex){
             $output->writeln("<error>Error: ".$ex->getMessage()." on line ".$ex->getLine()."</error>");
         }
